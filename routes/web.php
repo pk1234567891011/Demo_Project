@@ -30,8 +30,8 @@ Auth::routes();
 Route::view('admin/adminlogin','admin.adminlogin');
 Route::get('/main', 'MainController@index');
 Route::post('/main/checklogin', 'MainController@checklogin');
- Route::get('main/successlogin', 'MainController@successlogin');
- Route::get('logout', 'MainController@logout');
+Route::get('main/successlogin', 'MainController@successlogin');
+Route::get('logout', 'MainController@logout');
 Auth::routes();
 Route::view('register','register');
 
@@ -45,7 +45,7 @@ Route::resource('product','ProductController');
  Route::resource('product_attributes','ProductAttributeController');
 // Route::post('product/insert', 'ProductController@insert')->name('product.insert');
 // Route::resource('product_images','Product_ImageController');
-Route::get('product/create/{id}', 'ProductController@getValues');
+//Route::get('product/create/{id}', 'ProductController@getValues');
 Route::get('myform/ajax/{id}',array('as'=>'myform.ajax','uses'=>'ProductController@myformAjax'));
 Route::resource('coupon','CouponController');
 Route::view('Eshopper','frontend.home');
@@ -60,6 +60,12 @@ Route::get('login-register/successlogin', 'HomesController@successlogins');
 Route::get('logouts', 'HomesController@logouts');
 Route::get('/products/{url}','HomesController@products');
 Route::match(['GET','POST'],'forgot-password','HomesController@forgotPassword');
+Route::post('add-subscriber-email','NewsletterController@addSubscriber');
+Route::get('/view-newsletter-subscribers','NewsletterController@viewNewsletterSubscribers');
+Route::get('/update-newsletter-status/{id}/{status}','NewsletterController@updateNewsletterSubscribers');
+Route::get('/delete-newsletter-email/{id}','NewsletterController@deleteNewsletterSubscribers');
+Route::get('/export-newsletter-email','NewsletterController@exportNewsletterSubscribers');
+
 Route::group(['middleware'=>['frontlogin']],function(){
     Route::match(['GET','POST'],'account','HomesController@account');
     Route::post('/check-user-pwd','HomesController@chkUserPassword');
@@ -84,7 +90,15 @@ Route::group(['middleware'=>['frontlogin']],function(){
     Route::get('/wishlist/delete-product/{id}','HomesController@deleteWishlistProduct');
     Route::get('/wishlist/update-quantity/{id}/{quantity}','HomesController@updateWishlistQuantity');
     Route::match(['GET','POST'],'/wishlist/move-product/{id}','HomesController@moveToCart');
-
+    Route::match(['GET','POST'],'track','HomesController@track');
+    Route::match(['GET','POST'],'track_details','HomesController@trackOrder');
+    Route::post('/update-user-pwd','HomesController@updatePassword');
+    Route::resource('address','AddressController');
+    
+    Route::match(['get','post'],'/page/{url}','CMSController@cmsPage');
+   
 });
-Route::post('/update-user-pwd','HomesController@updatePassword');
-Route::resource('address','AddressController');
+Route::resource('/cms','CMSController');
+Route::resource('order','OrdersController');
+Route::resource('contact','ContactController');
+

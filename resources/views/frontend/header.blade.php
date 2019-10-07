@@ -1,5 +1,7 @@
 <?php
 use App\Http\Controllers\Controller; 
+use App\Cart;
+// $cartCount=Cart::cartCount();
 $mainCategories = Controller::mainCategories();
 ?>
 <header id="header"><!--header-->
@@ -64,9 +66,10 @@ $mainCategories = Controller::mainCategories();
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="{{url('account')}}"><i class="fa fa-user"></i>Account</a></li>
-								<li><a href="{{url('wishlist')}}"><i class="fa fa-star"></i> Wishlist</a></li>
+								<li><a href="{{url('wishlist')}}"><i class="fa fa-star"></i>Wishlist</a></li>
 								<li><a href="{{url('orders')}}"><i class="fa fa-crosshairs"></i>Orders</a></li>
-								<li><a href="{{url('cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="{{url('cart')}}"><i class="fa fa-shopping-cart"></i>Cart </a></li>
+								<li><a href="{{url('track')}}"><i class="fa fa-shopping-cart"></i>Track Order</a></li>
 								<li><a href="{{url('logouts')}}"><i class="fa fa-lock"></i>Logout</a></li>
 							</ul>
 						</div>

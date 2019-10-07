@@ -1,20 +1,26 @@
 <html>
     <head>
-        <title>Enquiry mail</title>
+        <title>Enquiry form</title>
     <head>
     <body>
         <table>
-            <tr><td>Dear Admin !</td></tr>
+            <tr><td>Dear Administrator,</td></tr>
             <tr><td>&nbsp;</td></tr>
-            <tr><td>User enquiry details are as below.<br>
-                   </td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>Name: {{$name}}</td></tr>
-            <tr><td>Email: {{$email}}</td></tr>
-            <tr><td>subject: {{$subject}}</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>Message: {{$comment}}</td></tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr><td>Thanks Regards,</td></tr>
+            <tr><td>Please check below details of customer. <br></td></tr>
+            <table style="width:70%;" border="1">
+                <tr>
+                    <th>Name</th>
+                    <td>{{$name}}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{$email}}</td>
+                </tr>
+                <tr>
+                    <th>Message</th>
+                    <td>{{$comment}}</td>
+                </tr>
+            </table>
+        </table>
     </body>
  </html>

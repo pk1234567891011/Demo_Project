@@ -8,6 +8,9 @@ class OrderDetails extends Model
 {
     protected $table="order_details";
     protected $fillable=['order_id','product_id','quantity','amount'];
-    
+    public function order()
+    {
+        return $this->belongsTo('App\UserOrder');
+    }
 }
 // <input type="text" name="country" value="{{$getCountryCode->country_code}}">
