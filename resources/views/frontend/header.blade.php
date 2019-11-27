@@ -1,7 +1,5 @@
 <?php
 use App\Http\Controllers\Controller; 
-use App\Cart;
-// $cartCount=Cart::cartCount();
 $mainCategories = Controller::mainCategories();
 ?>
 <header id="header"><!--header-->
@@ -19,11 +17,9 @@ $mainCategories = Controller::mainCategories();
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>
+									<span style="color:green">{{Auth::User()->firstname}}</span></a></li>
+								<li><a href="{{url('logouts')}}" style="color:red"><i class="fa fa-lock"></i>Logout</a></li>
 							</ul>
 						</div>
 					</div>
@@ -36,7 +32,7 @@ $mainCategories = Controller::mainCategories();
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="{{URL::asset('images/home/logo.png')}}" alt="" /></a>
+							<a href="{{url('homes')}}"><img src="{{URL::asset('images/home/logo.png')}}" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right">
 							<div class="btn-group">
@@ -70,7 +66,7 @@ $mainCategories = Controller::mainCategories();
 								<li><a href="{{url('orders')}}"><i class="fa fa-crosshairs"></i>Orders</a></li>
 								<li><a href="{{url('cart')}}"><i class="fa fa-shopping-cart"></i>Cart </a></li>
 								<li><a href="{{url('track')}}"><i class="fa fa-shopping-cart"></i>Track Order</a></li>
-								<li><a href="{{url('logouts')}}"><i class="fa fa-lock"></i>Logout</a></li>
+								
 							</ul>
 						</div>
 					</div>
@@ -96,26 +92,18 @@ $mainCategories = Controller::mainCategories();
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
 									@foreach($mainCategories as $cat)
-                                        <li><a href="{{asset('/products/'.$cat->name)}}">{{$cat->name}}</a></li>
+										@if($cat->children->count())
+											<li><a href="{{asset('/products/'.$cat->name)}}">{{$cat->name}}</a></li>
+										@endif
 									@endforeach
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li> 
-								<li><a href="404.html">404</a></li>
+							
 								<li><a href="{{url('/page/contact')}}">Contact</a></li>
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</div><!--/header-bottom-->

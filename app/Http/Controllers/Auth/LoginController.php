@@ -36,10 +36,6 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-     
-        // Set Auth Details
-
-        
-        // Redirect home page
+    
       
 }

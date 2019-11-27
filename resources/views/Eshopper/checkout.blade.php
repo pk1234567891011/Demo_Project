@@ -1,7 +1,9 @@
 @extends('frontend.home')
 @section('content')
+
 	@if(Session::has('flash_message_error'))
 		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">×</button>
 			<p>{!! session('flash_message_error') !!}</p>
 		</div>
 	@endif
@@ -12,6 +14,16 @@
 				<li class="active">Cart</li>
 			</ol>
 		</div>
+		@if(count($errors)>0)
+			<div class="alert alert-danger">
+				<strong>Whoops!!!</strong> There are some problems with your inputs.</br>
+				<ul>
+					@foreach($errors->all() as $error)
+						<li>{{ $error}}</li>
+					@endforeach
+				</ul>
+			</div>
+    	@endif
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-1">
 				<div class="login-form"><!--login form-->

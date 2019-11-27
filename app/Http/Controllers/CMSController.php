@@ -17,6 +17,14 @@ class CMSController extends Controller
         return view('cms.index',compact('cms_details'));
     }
 
+    public function search(Request $request){
+        $search=$request->search;
+        
+        $cms_details=cms::where('title','like','%'.$search.'%')->paginate(2);
+        return view('cms.index',compact('cms_details'));
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,7 +47,7 @@ class CMSController extends Controller
             'title'=>'required',
             'url'=>'required',
             'description'=>'required',
-            'status'=>'required|numeric'
+            'status'=>'required'
         ]);
         cms::create($request->all());
         return redirect('cms')->with('success', 'Cms created successfully');;
@@ -77,7 +85,7 @@ class CMSController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-        {$request->validate([
+    {   $request->validate([
             'title'=>'required',
             'url'=>'required',
             'description'=>'required',
@@ -86,7 +94,9 @@ class CMSController extends Controller
         cms::find($id)->update($request->all());
         return redirect('cms')->with('success', 'Cms updated successfully');;
     }
-    public function cmsPage($url){
+
+    public function cmsPage($url)
+    {
         $cmsCount=cms::where(['url'=>$url,'status'=>1])->count();
         if($cmsCount>0){
             $cms_details=cms::where('url',$url)->first();

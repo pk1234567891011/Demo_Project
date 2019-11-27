@@ -1,46 +1,7 @@
 
 @extends('frontend.home')
 @section('content')
-	<section id="slider"><!--slider-->
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							@foreach($sliders as $photo)
-                				<li data-target="#slider-carousel" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
-            				@endforeach
-        				</ol>
-
-						<div class="carousel-inner">
-              				@foreach($sliders as $slider)
-              					<div class="item image {{ $loop->first ? ' active' : '' }}">
-									<div class="col-sm-6">
-										<h1><span>E</span>-SHOPPER</h1>
-										<h2>Free E-Commerce Template</h2>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-										<button type="button" class="btn btn-default get">Get it now</button>
-									</div>
-									<div  class="col-sm-6">
-										<img class="girl img-responsive" src="{{$slider->banner_path}}" alt="slider" style="height:auto;width:auto"  title="Image Slideshow" >
-										<img src="{{asset('images/home/pricing.png')}}" class="pricing" alt="" />
-									</div>
-								</div>
-              				@endforeach
-						</div>
-
-						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-							<i class="fa fa-angle-left"></i>
-						</a>
-						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-							<i class="fa fa-angle-right"></i>
-						</a>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</section><!--/slider-->
+@include('Eshopper.slider')
   	<section>
 		<div class="container">
 			<div class="row">
@@ -91,46 +52,67 @@
           			</div>
         		</div>
         		<div class="col-sm-9 padding-right">
-					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Features Items</h2>
-                                  
-									<div class="col-sm-4">
-									@foreach($productsAll as $products)
-                       		@foreach($products->imgs as $images)
-                        		
-										<div class="product-image-wrapper">
+					<div class="features_items">
+					
+						<h2 class="title text-center">ALL ITEMS</h2>
+						<br>
+					    <div id="allproduct">
+							<form method="get" action="/allsearch">
+								<input type="text" placeholder="Search.." name="search">
+    							<button type="submit"><i class="fa fa-search"></i></button>
+							</form>
+						</div>
+						<br>
+						<br>
+						
+						@foreach($productsAll as $products)
+					    	@foreach($products->imgs as $img)
+                        		<div class="col-sm-4">
+						
+		
+									<div class="product-image-wrapper">
 							
-											<div class="single-products">
-												<div class="productinfo text-center">
-                                       
-													<img src="{{ URL::to('/') }}/products/{{ $images->image_name }}" style="height:100px ;width:auto" alt="" />
+										<div class="single-products">
+								        
+											<div class="productinfo text-center">
+												<img src="{{ URL::to('/') }}/products/{{ $img->image_name }}" height="227px">
+			            	@endforeach
+												<h2>INR {{$products->price}}</h2>
+												<p>{{$products->name}}</p>
+												<a href="{{url('prod/'.$products->id )}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View Details</a>
+											</div>
+											<div class="product-overlay">
+												<div class="overlay-content">
 													<h2>INR {{$products->price}}</h2>
 													<p>{{$products->name}}</p>
 													<a href="{{url('prod/'.$products->id )}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View Details</a>
 												</div>
-												<div class="product-overlay">
-													<div class="overlay-content">
-														<h2>INR {{$products->price}}</h2>
-														<p>{{$products->name}}</p>
-														<a href="{{url('prod/'.$products->id )}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View Details</a>
-													</div>
 											</div>
-                                        
 										</div>
-										<div class="choose">
-											<ul class="nav nav-pills nav-justified">
-												<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-												<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-											</ul>
-										</div>
+									<div class="choose">
+										<ul class="nav nav-pills nav-justified">
+											
+										</ul>
 									</div>
-								<!-- </div> -->
-                       			
-                        	@endforeach
+									
+								</div>
+							</div>
+							
+							
 						@endforeach
-                    </div>
+					
+						
+      				</div>
+					 
+				</div>
+				<div align ="center">
+					{{ $productsAll->links() }}
 				</div>
 			</div>
+			
 		</div>
-	</div>
+		
+		</div>
+	</section>
+	
 @endsection

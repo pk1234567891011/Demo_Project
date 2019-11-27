@@ -75,7 +75,6 @@
                         <option value="">Select Category</option>
                         @foreach($category as $cat)
                           <option value="{{ $cat->id}}">{{ $cat->name }}</option>
-
                         @endforeach
                       </select>
 
@@ -189,7 +188,6 @@
     $(document).ready(function() {
 
       $(document).on('change', 'select[name="drop[]"]', function(event) {
-    //$('select[name="drop[]"]').on('change', function(){
         var attribue_id = $(this).val();
 
         var att_id=this.id;
@@ -200,9 +198,7 @@
                 url: '/myform/ajax/'+attribue_id,
                 type:"GET",
                 dataType:"json",
-                // beforeSend: function(){
-                    // $('#loader').css("visibility", "visible");
-                // },
+               
 
                 success:function(data) {
 
@@ -214,9 +210,7 @@
 
                     });
                 },
-                // complete: function(){
-                    // $('#loader').css("visibility", "hidden");
-                // }
+              
             });
         } else {
             $('select[name="value[]"]').empty();

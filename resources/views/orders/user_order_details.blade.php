@@ -1,6 +1,5 @@
 @extends('frontend.home')
 @section('content')
-
     <section id="cart_items">
 		<div class="container">
 			<div class="breadcrumbs">

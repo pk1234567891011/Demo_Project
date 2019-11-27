@@ -31,22 +31,22 @@
             <p id="bill">BILL TO:</p>
             <div id="address">
                 <table style="width:70%;" border="1">
-                  <tr>
-                    <th>User address</th>
-                    <td>{{$productDetails['billing_address']}},{{$productDetails['billing_city']}},{{$productDetails['billing_state']}},{{$productDetails['billing_country']}},{{$productDetails['billing_pincode']}}</td>
-                  </tr>
-                  <tr>
-                    <th>Billing address</th>
-                    <td>{{$productDetails['billing_address']}},{{$productDetails['billing_city']}},{{$productDetails['billing_state']}},{{$productDetails['billing_country']}},{{$productDetails['billing_pincode']}}</td>
-                  </tr>
-                  <tr>
-                    <th>Shipping address</th>
-                    <td>{{$productDetails['shipping_address']}},{{$productDetails['shipping_city']}},{{$productDetails['shipping_state']}},{{$productDetails['shipping_country']}},{{$productDetails['shipping_pincode']}}</td>
-                  </tr>
+					<tr>
+						<th>User address</th>
+						<td>{{$productDetails['billing_address']}},{{$productDetails['billing_city']}},{{$productDetails['billing_state']}},{{$productDetails['billing_country']}},{{$productDetails['billing_pincode']}}</td>
+					</tr>
+					<tr>
+						<th>Billing address</th>
+						<td>{{$productDetails['billing_address']}},{{$productDetails['billing_city']}},{{$productDetails['billing_state']}},{{$productDetails['billing_country']}},{{$productDetails['billing_pincode']}}</td>
+					</tr>
+					<tr>
+						<th>Shipping address</th>
+						<td>{{$productDetails['shipping_address']}},{{$productDetails['shipping_city']}},{{$productDetails['shipping_state']}},{{$productDetails['shipping_country']}},{{$productDetails['shipping_pincode']}}</td>
+					</tr>
                 </table>
             </div>
             <p id="payment">PAYMENT METHOD:{{$productDetails['shipping_method']}}</p>
          </div>
           
     </body>
- </html>
+</html>

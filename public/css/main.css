@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background:;
+  /* background:; */
   position: relative;
   font-weight:400px;
 }
@@ -61,6 +61,7 @@ a#scrollUp {
 a#scrollUp i{
   font-size: 30px;
 }
+
 
 
 /*************************
@@ -899,7 +900,7 @@ h2.title {
   transition: height 500ms ease 0s;
   width: 100%;
   display: block;
-  opacity:;
+  /* opacity:; */
 }
 
 .single-products:hover .product-overlay {
@@ -1064,8 +1065,8 @@ h2.title {
   background: #ccccc6;
 }
 
-.recommended_items  h2 {
-}
+/* .recommended_items  h2 {
+} */
 
 .our_partners{
   overflow:hidden;
@@ -1432,13 +1433,13 @@ h2.title {
   overflow: hidden;
 }
 
-.login-form {
+/* .login-form {
 
-}
+} */
 
-.signup-form {
+/* .signup-form {
 
-}
+} */
 
 .login-form h2, .signup-form h2 {
   color: #696763;
@@ -1489,9 +1490,9 @@ h2.title {
   padding: 6px 25px;
 }
 
-.login-form label{
+/* .login-form label{
 
-}
+} */
 
 
 .login-form label input {
@@ -1639,7 +1640,7 @@ h2.title {
   overflow: hidden;
   text-align: center;
   width: 35px;
-  float: left;
+  /* float: left; */
 }
 
 
@@ -1750,8 +1751,8 @@ h2.title {
   margin-right: 10px
 }
 
-.user_info > li > span {
-}
+/* .user_info > li > span {
+} */
 
 .user_info input, select, textarea {
   background: #F0F0E9;
@@ -2000,8 +2001,8 @@ h2.title {
   margin-bottom: 17px;
 }
 
-.single-blog-post > a {
-}
+/* .single-blog-post > a {
+} */
 
 .blog-post-area 
 .single-blog-post a img {
@@ -2576,5 +2577,80 @@ ol.progtrckr li.progtrckr-todo:before {
   font-size: 2.2em;
   bottom: -1.2em;
 }
+.create_link{
+  position: absolute;
+  margin-left: -203px; top: 100px
+}
+.create_div{
+  position: absolute; 
+  margin-right: 20px;
+}
+.table_div {
+  position: absolute;
+  top: 191px;
+}
+.banner_image{
+  height: 80px;
+  width: 80px
+}
+#search{
+  position: absolute;
 
+  width: 140px;
+  top: 120px;
+  right: 140px;
+}
+#btnSearch{
+  position: absolute;
+  top: 105px;
 
+  width: 91px;
+
+  right: 49px;
+}
+#deleteAll{
+  margin-bottom: 10px;
+  background-color: #9fbc35;
+  border-color: #9fbc35;
+}
+#allproduct{
+    right: -40px;
+    position: absolute;
+    top: 22px;
+}
+#dash{
+  position: absolute;
+  left: 20px;
+  top: 65px;
+  background-color: gray;
+  height: 26px;
+  font-size: 20px;
+}
+#order_records{
+  position: absolute;
+  color: blue;
+  font-size: 20px;
+  left: 425px;
+}
+#add_cat{
+  position: absolute;
+  margin-left: -203px;
+  top: 100px;
+  background-color: palevioletred;
+  color: white;
+  font-size: 17px;
+  text-decoration: none;
+}
+#pincode{
+  margin-top:10px;
+}
+#banner_image{
+  height: 311px;
+  width: 311px;
+}
+#back{
+  top: 215px;
+  position: absolute;
+  padding-left: 261px;
+  font-size: 20pt;
+}

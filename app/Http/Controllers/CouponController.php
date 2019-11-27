@@ -17,7 +17,13 @@ class CouponController extends Controller
         return view('coupon.index',compact('coupon'));
 
     }
+    public function search(Request $request){
+        $search=$request->search;
+        
+        $coupon=Coupon::where('code','like','%'.$search.'%')->paginate(10);
+        return view('coupon.index',compact('coupon'));
 
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -84,7 +90,8 @@ class CouponController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {  $coupon = Coupon::find($id);
+    {   
+        $coupon = Coupon::find($id);
         $request->validate([
             'code' => 'required',
             'percent_off' => 'required',

@@ -1,7 +1,7 @@
 @extends('admin.admin_template')
 @section('content')
 <form method="post" action="{{url('banner')}}" enctype="multipart/form-data">
-{{csrf_field()}}
+    {{csrf_field()}}
     @if(count($errors)>0)
         <div class="alert alert-danger">
             <strong>Whoops!!!</strong> There are some problems with your inputs.</br>

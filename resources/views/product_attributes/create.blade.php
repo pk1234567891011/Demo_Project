@@ -1,9 +1,8 @@
 
 @extends('admin.admin_template')
 @section('content')
-    <form method="post" enctype="multipart/form-data" action="{{url('product_attributes')}}" name="add_name" id="add_name">
-        {{csrf_field()}}
-        @if(count($errors)>0)
+
+    @if(count($errors)>0)
         <div class="alert alert-danger">
             <strong>Whoops!!!</strong> There are some problems with your inputs.</br>
             <ul>
@@ -14,6 +13,11 @@
 
         </div>
     @endif
+    @if(Session::has('flash_message_error'))
+		<div class="alert alert-error">
+			<p>{!! session('flash_message_error') !!}</p>
+		</div>
+	@endif
     <div class="row">
         <div class="col-xs-12">
             <div class="form-group">

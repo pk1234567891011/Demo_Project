@@ -279,3 +279,4 @@ $('#users').validate({
 		return false;
 	}
  }
+

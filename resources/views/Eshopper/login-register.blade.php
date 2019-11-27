@@ -2,16 +2,19 @@
 @section('content')
 	@if($message=Session::get('success'))
 		<div class="alert alert-success">
+			<button type="button" class="close" data-dismiss="alert">×</button>
 			<p>{{ $message }}</p>
 		</div>
 	@endif
 	@if(Session::has('flash_message_error'))
 		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">×</button>
 			<p>{!! session('flash_message_error') !!}</p>
 		</div>
 	@endif
 	@if(Session::has('flash_message_success'))
 		<div class="alert alert-success">
+			<button type="button" class="close" data-dismiss="alert">×</button>
 			<p>{!! session('flash_message_success') !!}</p>
 		</div>
 	@endif
@@ -44,14 +47,19 @@
 						<h2>Login to your account</h2>
 						<form id="login" name="login" method="POST" action="{{url('/login-register/checklogin')}}" >
 						{{ csrf_field() }}
-							<input  type="email" placeholder="Email Address" required/>
+							<input id="email" name="email" type="email" placeholder="Email Address" required/>
 							<input id="password" name="password" type="password" placeholder="Password" />
-							<span>
-								<input type="checkbox" class="checkbox"> 
-								Keep me signed in
-							</span>
-							<button type="submit" class="btn btn-default">Login</button>
-							<a href="{{url('forgot-password')}}">Forget password</a>
+							
+							<button type="submit" class="btn btn-success">Login</button>
+							<p></p>
+							<a href="{{url('forgot-password')}}">Forgot password ?</a>
+
+                            <a href="{{ url('login/facebook') }}" class="btn btn-primary fa fa-facebook-square fa-2x" style="background-color: #2887ff">   Login With Facebook</a>
+							<p></p>
+							<a href="{{ url('/redirect') }}"  class="btn btn-primary"  style="background-color: #ff5c33"><i class="fa fa-google-plus-square" aria-hidden="true"></i>
+								Login With Google Plus
+							</a>
+                            <br>
 						</form>
 					</div><!--/login form-->
 				</div>
@@ -74,12 +82,12 @@
 			</div>
 		</div>
 	</section><!--/form-->
-	<script src="{{ asset ('jss/js/jquery.js')}}"></script>
-	<script src="{{ asset ('jss/js/bootstrap.min.js')}}"></script>
-	<script src="{{ asset ('jss/js/jquery.scrollUp.min.js')}}"></script>
-	<script src="{{ asset ('jss/js/price-range.js')}}"></script>
-    <script src="{{ asset ('jss/js/jquery.prettyPhoto.js')}}"></script>
-    <script src="{{ asset ('jss/js/main.js')}}"></script>
-    <script src="{{ asset ('jss/js/jquery.validate.js')}}"></script>
-    <script src="{{ asset ('jss/js/main.js')}}"></script>
+<script src="{{ asset ('jss/js/jquery.js')}}"></script>
+<script src="{{ asset ('jss/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset ('jss/js/jquery.scrollUp.min.js')}}"></script>
+<script src="{{ asset ('jss/js/price-range.js')}}"></script>
+<script src="{{ asset ('jss/js/jquery.prettyPhoto.js')}}"></script>
+<script src="{{ asset ('jss/js/main.js')}}"></script>
+<script src="{{ asset ('jss/js/jquery.validate.js')}}"></script>
+<script src="{{ asset ('jss/js/main.js')}}"></script>
 @endsection

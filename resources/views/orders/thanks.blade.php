@@ -1,6 +1,5 @@
 @extends('frontend.home')
 @section('content')
-
 	<section id="cart_items">
 		<div class="container">
 			<div class="breadcrumbs">
@@ -14,7 +13,7 @@
 	<section id="do_action">
 		<div class="container" align="center">
 			<div class="heading">
-				<h3>YOUR COD ORDER HAS BEEN PLACED</h3>
+				<h3>YOUR ORDER HAS BEEN PLACED</h3>
 				<p> Your order number is {{Session::get('order_id') }}
  					and total payable amount is {{Session::get('grand_total')}} 
 				</p>
@@ -23,7 +22,7 @@
 	</section><!--/#do_action-->
 @endsection
 <?php
-Session::forget('order_id'); 
-Session::forget('grand_total'); 
+	Session::forget('order_id'); 
+	Session::forget('grand_total'); 
 
 ?>

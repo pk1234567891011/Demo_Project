@@ -26,9 +26,17 @@ class ProductController extends Controller
     {
         $product = Product::latest()->paginate(2);
         $multiple = Product::has('imgs')->get();
-        return view('product.index', compact('product', 'multiple'))->with('i', (request()->input('page', 1) - 1) * 2);
+        return view('product.index', compact('product', 'multiple'));
     }
+    public function search(Request $request)
+    {
+        $search=$request->search;
+        $multiple = Product::has('imgs')->get();
 
+        $product=Product::where('name','like','%'.$search.'%')->paginate(2);
+        return view('product.index', compact('product', 'multiple'));
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -42,9 +50,8 @@ class ProductController extends Controller
         return view('product.create',compact('attributes','category'));
     }
     public function myformAjax($id){
-        //$values = DB::table("product_attribute_values")->where("product_attribute_id",$id)->pluck("attribute_value","id");
+        
         $values = Product_attribute_values::where("product_attribute_id",$id)->pluck("attribute_value","id");
-       
         return json_encode($values);
 
     }
@@ -76,41 +83,40 @@ class ProductController extends Controller
             'names'=>'required',
           
         ]);
-
+       
         Product::create($request->all());
         $user = auth()->user();
        
-        $product = Product::select('*')
-            ->orderBy('id', 'DESC')->first();
-            $category=new Product_categories();
-            $category->product_id=$product->id;
-            $category->category_id=$request->CID;
-            $category->save();
+        $product = Product::select('*')->orderBy('id', 'DESC')->first();
+        $category=new Product_categories();
+        $category->product_id=$product->id;
+        $category->category_id=$request->CID;
+        
+       
+        $category->save();
         if ($request->hasFile('names')) {
             $image = $request->file('names');
-            /*foreach ($file as $image) {*/
-                $object = new Product_images();
-                $filename = $image->getClientOriginalName();
-
-                $image->move(public_path() . '/products/', $filename);
-                $object->image_name = $filename;
-                $object->status = $product->status;
-                $object->created_by = $user->id;
-                $object->product_id = $product->id;
-                $object->save();
-            // }
+            $object = new Product_images();
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path() . '/products/', $filename);
+            $object->image_name = $filename;
+            $object->status = $product->status;
+            $object->created_by = $user->id;
+            $object->product_id = $product->id;
+            $object->save();
+        
         }
         $att = $request->drop;
         $val = $request->value;
         for($count = 0; $count < count($att); $count++)
         {
-         $data = array(
-          'product_attribute_id' => $att[$count],
-          'product_attribute_value_id'  => $val[$count],
-          'product_id'=>$product->id
-          
-         );
-         $insert_data[] = $data; 
+            $data = array(
+                'product_attribute_id' => $att[$count],
+                'product_attribute_value_id'  => $val[$count],
+                'product_id'=>$product->id
+            
+                );
+            $insert_data[] = $data; 
         }
   
         Product_attributes_assoc::insert($insert_data);
@@ -128,7 +134,8 @@ class ProductController extends Controller
         //
     }
     public function first()
-    {   $category=Category::with('children')->get();
+    {   
+        $category=Category::with('children')->get();
         $sliders = Banner::orderby('id', 'desc')->paginate(10);
         return view('Eshopper.first',compact('sliders','category'));
     }
@@ -172,13 +179,15 @@ class ProductController extends Controller
             'meta_title' => 'required',
             'meta_keywords' => 'required',
             'is_featured' => 'required',
-            'CID'=>'required',
-            'names'=>'required'
+            'CID'=>'required'
+           
         ]);
         $user = auth()->user();
         $product_images= Product_images::where('product_id',$id)->first();
         $product=Product::find($id)->first();
-
+        $category_details=Product_categories::where('product_id',$id)->first();
+        $category_details->category_id=$request->CID;
+        $category_details->save();
         if($request->hasFile('names'))
         {
            
@@ -187,7 +196,7 @@ class ProductController extends Controller
             
             if (File::exists($userImage)) 
             { 
-                 unlink($userImage);
+                unlink($userImage);
     
                
             }
@@ -215,32 +224,16 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //$image = \DB::table('product')->where('id', $id)->first();
-        //$trial = \DB::table('product_images')->where('product_id', $id)->get();
-        // $image = Product::where('id', $id)->first();
-       /* $trial = Product_images::where('product_id', $id)->get();
-
-
-        foreach ($trial as $image) {
-
-            $file = $image->image_name;
-            $filename = public_path() . '/products/' . $file;
-            \File::delete($filename);
-
-        }
-        Product_images::whereIn('id', $trial->pluck('id'))->delete();*/
-        
         $assoc=Product_attributes_assoc::where('product_id',$id)->first();
         $value=Product_attributes::where('id',$assoc->product_attribute_id)->first();
+        $image =Product_images::where('product_id', $id)->first();
+        $file= $image->image_name;
+        $filename = public_path(). '/products/'.$file;
+        \File::delete($filename);
         Product_images::where('product_id', $id)->delete();
         Product_categories::where('product_id', $id)->delete();
-       // Product_attribute_values::where(['product_attribute_id',$assoc->product_attribute_value_id,])->first();
-       // Product_attributes::where('id',$assoc->product_attribute_id)->delete();
-       
-        
         Product_attributes_assoc::where('product_id',$id)->delete();
         Product::find($id)->delete();
-        
         return redirect()->route('product.index')->with('success', 'Product deleted successfully');
     }
 }

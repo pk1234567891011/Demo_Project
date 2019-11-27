@@ -5,10 +5,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{URL::asset('AdminLTE-2.4.15/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+          <img src="{{URL::asset('AdminLTE-2.4.15/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image" style="visibility:hidden">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{Auth::User()->firstname}}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -44,14 +44,20 @@
             <li class="active"><a href="{{route('coupon.index')}}"><i class="fa fa-circle-o"></i> Coupon Management</a></li>
             <li class="active"><a href="{{url('order')}}"><i class="fa fa-circle-o"></i> Track Order</a></li>
             <li class="active"><a href="{{url('contact')}}"><i class="fa fa-circle-o"></i> Contact Management</a></li>
-            <li class="active"><a href="{{url('view-newsletter-subscribers')}}"><i class="fa fa-circle-o"></i> Newsletter Management</a></li>
             <li class="active"><a href="{{url('cms')}}"><i class="fa fa-circle-o"></i> CMS Management</a></li>
-            <li class="active"><a href="{{url('cms')}}"><i class="fa fa-circle-o"></i> Customer Details</a></li>
-
+            <li class="active"><a href="{{url('customer')}}"><i class="fa fa-circle-o"></i> Customer Details</a></li>
+            <li class="active"><a href="{{url('orderdetails')}}"><i class="fa fa-circle-o"></i> Order Details</a></li>
+            <li class="active"><a href="{{url('userOrder')}}"><i class="fa fa-circle-o"></i> User Order</a></li>
+            <li class="active"><a href=""><i class="fa fa-circle-o"></i>Reports</a> </li>
+            <ul>
+            <li class="active"><a href="{{url('SalesReport')}}"><i class="fa fa-circle-o"></i> Sales Report</a></li>
+            <li class="active"><a href="{{url('usersregistered')}}"><i class="fa fa-circle-o"></i> Users Registered</a></li>
+            <li class="active"><a href="{{url('CouponUsed')}}"><i class="fa fa-circle-o"></i> Coupons Used</a></li>
+            </ul>
           </ul>
-        </li>
+        <!-- </li>
 view-newsletter-subscribers
-        <li>
+        <li> -->
           <a href="pages/widgets.html">
             <i class="fa fa-th"></i> <span>Widgets</span>
             <span class="pull-right-container">
