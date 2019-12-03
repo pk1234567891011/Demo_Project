@@ -55,9 +55,7 @@
             <li class="active"><a href="{{url('CouponUsed')}}"><i class="fa fa-circle-o"></i> Coupons Used</a></li>
             </ul>
           </ul>
-        <!-- </li>
-view-newsletter-subscribers
-        <li> -->
+       
           <a href="pages/widgets.html">
             <i class="fa fa-th"></i> <span>Widgets</span>
             <span class="pull-right-container">
@@ -393,6 +391,4 @@ view-newsletter-subscribers
   <div class="control-sidebar-bg"></div>
 
 
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
+  

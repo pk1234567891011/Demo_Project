@@ -1,6 +1,6 @@
 @extends('frontend.home')
 @section('content')
-<div class="container text-center">
+	<div class="container text-center">
 		<div class="logo-404">
 			<a href="index.html"><img src="{{asset('images/home/logo.png')}}" alt="" /></a>
 		</div>

@@ -141,3 +141,7 @@
 		</div>
 	</section>
 @endsection
+<!-- @foreach($cms as $pages)
+							<li><a href="{{ url('/page/'.$pages->url)}}">{{$pages->title}}</a></li>
+						</ul>
+						@endforeach -->

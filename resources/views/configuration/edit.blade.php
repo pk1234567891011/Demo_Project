@@ -23,7 +23,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="configuration_value">Configuration Value:</label>
-				<input type="text" class="form-control" name="conf_value" value="{{$configuration->conf_value}}">
+					<input type="text" class="form-control" name="conf_value" value="{{$configuration->conf_value}}">
 				</div>
 			</div>
 			<div class="col-xs-12">

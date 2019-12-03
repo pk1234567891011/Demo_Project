@@ -52,6 +52,4 @@
 			</div>
 		</div>
 	</section> <!--/#cart_items-->
-
-	
 @endsection

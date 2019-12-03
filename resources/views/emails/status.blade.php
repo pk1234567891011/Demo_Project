@@ -46,7 +46,7 @@
                 </table>
             </div>
             <p id="payment">PAYMENT METHOD:{{$productDetails['shipping_method']}}</p>
-         </div>
+        </div>
           
     </body>
 </html>

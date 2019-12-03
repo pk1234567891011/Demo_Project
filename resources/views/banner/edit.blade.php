@@ -1,6 +1,6 @@
 @extends('admin.admin_template')
 @section('content')
- <form action="{{url('banner', [$banner->id])}}" method="POST"  enctype="multipart/form-data">
+<form action="{{url('banner', [$banner->id])}}" method="POST"  enctype="multipart/form-data">
     <input type="hidden" name="_method" value="PUT">
  	{{csrf_field()}}
     @if(count($errors)>0)

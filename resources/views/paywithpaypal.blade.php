@@ -11,13 +11,13 @@
             
                 @if ($message = Session::get('success'))
 
-                <div class="custom-alerts alert alert-success fade in">
+                    <div class="custom-alerts alert alert-success fade in">
 
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
 
-                    {!! $message !!}
+                        {!! $message !!}
 
-                </div>
+                    </div>
 
                 <?php Session::forget('success');?>
 
@@ -25,15 +25,15 @@
 
                 @if ($message = Session::get('error'))
 
-                <div class="custom-alerts alert alert-danger fade in">
+                    <div class="custom-alerts alert alert-danger fade in">
 
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
 
-                    {!! $message !!}
+                        {!! $message !!}
 
-                </div>
+                    </div>
 
-                <?php Session::forget('error');?>
+                    <?php Session::forget('error');?>
 
                 @endif
 
@@ -66,9 +66,6 @@
                             </div>
 
                         </div>
-
-                        
-
                         <div class="form-group">
 
                             <div class="col-md-6 col-md-offset-4">

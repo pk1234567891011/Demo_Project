@@ -116,28 +116,28 @@
 </head><!--/head-->
 
 <body>
-<div class="wrapper">
+    <div class="wrapper">
 
-    <!-- Header -->
-    @include('frontend.without_login_header')
+        <!-- Header -->
+        @include('frontend.without_login_header')
 
-    <!-- Sidebar -->
+        <!-- Sidebar -->
 
-    <!-- Content Wrapper. Contains page content -->
-    
-        <!-- Content Header (Page header) -->
+        <!-- Content Wrapper. Contains page content -->
+        
+            <!-- Content Header (Page header) -->
 
-        <!-- Main content -->
-        <section class="content">
-            <!-- Your Page Content Here -->
-            @yield('content')
-        </section><!-- /.content -->
-    </div><!-- /.content-wrapper -->
+            <!-- Main content -->
+            <section class="content">
+                <!-- Your Page Content Here -->
+                @yield('content')
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
 
-    <!-- Footer -->
-    @include('frontend.footer')
+        <!-- Footer -->
+        @include('frontend.footer')
 
-</div>
+    </div>
 </body>
     <script src="{{ asset ('jss/js/jquery.js')}}"></script>
 	<script src="{{ asset ('jss/js/bootstrap.min.js')}}"></script>

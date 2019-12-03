@@ -100,6 +100,7 @@ Route::group(['middleware'=>['frontlogin']],function(){
     Route::resource('address','AddressController');
     Route::match(['get','post'],'/page/{url}','CMSController@cmsPage');
     Route::view('/paywithpaypal', 'paywithpaypal');
+    Route::post('/selectaddress','HomesController@selectAddress');
     Route::post('/paywithpaypal', 'PaymentController@createPayment')->name('create-payment');
     Route::get('/confirm', 'PaymentController@confirmPayment')->name('confirm-payment');
    

@@ -25,10 +25,10 @@
 		</div>
 	@endif
 	<div id="div_form">
-    <form method="get" action="/usersearch">
-    <input type="search" name="search" class="form-control" id="search"> 
-    <button type="submit" id="btnSearch" class="btn btn-primary"  >Search</button>
-    </form>
+		<form method="get" action="/usersearch">
+			<input type="search" name="search" class="form-control" id="search"> 
+			<button type="submit" id="btnSearch" class="btn btn-primary"  >Search</button>
+		</form>
 	</div>
 	@if($users->isEmpty())
 		<span id="back">No Records</span>
@@ -65,9 +65,6 @@
 
 					</tr>
 				@endforeach
-
-
-
 			</table>
 			{!! $users->links() !!}
 
